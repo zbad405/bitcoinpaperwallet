@@ -111,6 +111,13 @@ function setCryptoCurrency(toThis) {
 		window.compressedWIFPrefix = 'Q';	
 		document.title = 'Dogecoin paper wallet generator. Wow! Many coin. Such shiny.';
 		break;
+  case 'Zetacoin':
+		window.networkVersion = 0x50;
+		window.privateKeyPrefix = 0xE0;
+		window.WIFPrefix = '8';
+		window.compressedWIFPrefix = 'a';	
+		document.title = 'Zetacoin wallet Generator';
+		break;
 	case 'Testnet':
 		window.networkVersion = 0x6F;
 		window.privateKeyPrefix = 0xEF;
@@ -142,11 +149,15 @@ switch (myDesign) {
 	case 'alt-dogecoin':
 		setCryptoCurrency('Dogecoin');
 		break;
+  case 'alt-zetacoin':
+		setCryptoCurrency('Zetacoin');
+		break;
 	case 'alt-testnet':
 		setCryptoCurrency('Testnet');
 		break;
 	default:
-	setCryptoCurrency('Bitcoin');
+	//setCryptoCurrency('Bitcoin');
+  setCryptoCurrency('Zetacoin');
 	window.suppliesURL = 'https://bitcoinpaperwallet.com/#purchase'; // remove special currency flag
 } 
 
