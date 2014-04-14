@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Bitcoin Paper Wallet Generator</title>
+	<title>Zetacoin Paper Wallet Generator</title>
 	<!--
     
     generate-wallet.html (from https://bitcoinpaperwallet.com)
@@ -91,26 +91,6 @@ function setCryptoCurrency(toThis) {
 	window.currencyName = toThis;
 	switch (toThis)
 	{
-	case 'Bitcoin':	
-	  window.networkVersion = 0x00;
-	  window.privateKeyPrefix = 0x80;
-	  window.WIFPrefix = '5';
-	  window.compressedWIFPrefix = '[LK]';
-	  break;
-	case 'Litecoin':
-		window.networkVersion = 0x30;
-		window.privateKeyPrefix = 0xb0;
-		window.WIFPrefix = '6';
-		window.compressedWIFPrefix = 'T';
-		document.title = 'Litecoin paper wallet generator';
-		break;
-	case 'Dogecoin':
-		window.networkVersion = 0x1e;
-		window.privateKeyPrefix = 0x9e;
-		window.WIFPrefix = '6';
-		window.compressedWIFPrefix = 'Q';	
-		document.title = 'Dogecoin paper wallet generator. Wow! Many coin. Such shiny.';
-		break;
   case 'Zetacoin':
 		window.networkVersion = 0x50;
 		window.privateKeyPrefix = 0xE0;
@@ -118,16 +98,9 @@ function setCryptoCurrency(toThis) {
 		window.compressedWIFPrefix = 'a';	
 		document.title = 'Zetacoin wallet Generator';
 		break;
-	case 'Testnet':
-		window.networkVersion = 0x6F;
-		window.privateKeyPrefix = 0xEF;
-		window.WIFPrefix = '9';
-		window.compressedWIFPrefix = 'c';
-		document.title = 'Bitcoin TESTNET paper wallet generator';
-		break;
 	default:
-	  alert ('Invalid cryptocurrency "' + toThis + '" at initialization. Defaulting to Bitcoin.');
-	  setCryptoCurrency('Bitcoin');		
+	  alert ('Invalid cryptocurrency "' + toThis + '" at initialization. Defaulting to Zetacoin.');
+	  setCryptoCurrency('Zetacoin');		
 	} // eof switch
 	return (true);
 }
@@ -149,7 +122,7 @@ switch (myDesign) {
 	case 'alt-dogecoin':
 		setCryptoCurrency('Dogecoin');
 		break;
-  case 'alt-zetacoin':
+    case 'alt-zetacoin':
 		setCryptoCurrency('Zetacoin');
 		break;
 	case 'alt-testnet':
@@ -157,8 +130,8 @@ switch (myDesign) {
 		break;
 	default:
 	//setCryptoCurrency('Bitcoin');
-  setCryptoCurrency('Zetacoin');
-	window.suppliesURL = 'https://bitcoinpaperwallet.com/#purchase'; // remove special currency flag
+	setCryptoCurrency('Zetacoin');
+	///window.suppliesURL = 'https://bitcoinpaperwallet.com/#purchase'; // remove special currency flag
 } 
 
 </script>
@@ -5877,8 +5850,6 @@ Bitcoin.Util = {
 	</script>
 
 
-
-
 	<script type="text/javascript">
 	// User Agent Parser added by BitcoinPaperWallet.com for browser detection.
 	// UAParser.js v0.6.1
@@ -9909,6 +9880,8 @@ Bitcoin.Util = {
 						stop();
 						if (data.indexOf('bitcoin:') == 0)
 							data = data.substring(8);
+						if (data.indexOf('zetacoin:') == 0)
+							data = data.substring(8);
 						_success(data);
 					}
 				};
@@ -10040,7 +10013,7 @@ Bitcoin.Util = {
 		#paperarea .artwallet .btcaddress  
 		{
 		    position: absolute; top: 275px; left: 40px; z-index: 100; background-color: transparent;
-		    color: #1739ad; margin: 0;
+		    color: #F30; margin: 0;
 				-webkit-transform-origin:top left; 
 				/* -webkit-transform:rotate(-90deg); */
 				-moz-transform-origin:top left;    
@@ -10056,7 +10029,7 @@ Bitcoin.Util = {
 		#paperarea .artwallet .dupbtcaddress  
 		{
 		    position: absolute; top: 45px; left: 40px; z-index: 100; background-color: transparent;
-		    color: #1739ad; margin: 0;
+		    color: #F30; margin: 0;
 				/* -webkit-transform-origin:top left; */
 				-webkit-transform:rotate(-180deg); 
 				/* -moz-transform-origin:top left; */   
@@ -10375,8 +10348,8 @@ Bitcoin.Util = {
               <span><a href="?culture=fr" id="culturefr">Français</a></span> -->
               &nbsp;
           	</div>
-			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Wallet Generator <span>Updated March 1, 2014</span></div>
-			<div id="tagsite">For help, security tips, or wallet making supplies visit <a href="https://bitcoinpaperwallet.com">bitcoinpaperwallet.com</a></div>
+			<div id="tagline">Open Source JavaScript <script type="text/javascript">document.write(window.currencyName);</script> Wallet Generator <span>Updated April 14, 2014</span></div>
+            <div id="tagsite"><br/></div>
             <div id="tagwarning"></div>
 			<div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
         
@@ -10473,12 +10446,10 @@ Bitcoin.Util = {
 						  }
 						</script>
                         </li>
-                        <li><strong>?</strong> Are you using a secure operating system guaranteed to be free of spyware and viruses, for example, an <a href="#" onClick="window.open(window.suppliesURL, '_blank'); return false;">Ubuntu LiveCD</a>?</li>
+                        <li><strong>?</strong> Are you using a secure operating system guaranteed to be free of spyware and viruses, for example, an Ubuntu LiveCD?</li>
                         </ul>
                         
                         <p><a href="https://bitcoinpaperwallet.com/#security" target="_blank">More security tips and answers to frequently asked questions &raquo;</a></p>
-                        
-						<span><a href="#" onClick="window.open(window.suppliesURL, '_blank'); return false;" class="nicerButton" style="width: 400px;">Order hologram stickers / zip bags / Ubuntu CD &raquo;</a></span>
 
                         </div>
 
@@ -10491,25 +10462,8 @@ Bitcoin.Util = {
 						</div>
                         <p style="margin-top: 0;"><strong>Change your wallet design, language, or cryptocurrency?</strong>
     					<select id="designPicker" onChange="setDesign(this.value, false);" style="font-size: 12px;">
-                  		  <option value="default">--- Bitcoin Wallet Designs ---</option>
-                          <option value="default">Standard Bitcoin Design (English)</option>
-                          <option value="holiday">Holiday / Christmas Design (English)</option>
-                          <option value="chinese-new-year">Chinese New Year (Simplified Chinese)</option>
-                          <option value="traditional-chinese-new-year">Chinese New Year (Traditional Chinese)</option>
-                          <option value="chinese">Standard (Simplified Chinese)</option>
-                          <option value="traditional-chinese">Standard (Traditional Chinese/zh-tw)</option>
-                          <option value="czech">Standard (Czech)</option>
-                          <option value="dutch">Standard (Dutch)</option>
-                          <option value="french">Standard (French)</option>
-                          <option value="german">Standard (German)</option>
-                          <option value="italian">Standard (Italian)</option>
-                          <option value="portuguese">Standard (Portuguese)</option>
-                          <option value="russian">Standard (Russian)</option>
-                  		  <option value="spanish">Standard (Spanish)</option>
-                  		  <option value="default">--- Other Cryptocurrencies ---</option>
-                  		  <option value="alt-litecoin">Litecoin</option>
-                  		  <option value="alt-dogecoin">Dogecoin</option>
-                  		  <option value="alt-testnet">"Testnet"</option>
+                  		  <option value="alt-zetacoin">--- Zetacoin Wallet Designs ---</option>
+                          <option value="alt-zetacoin">Standard Zetacoin Design (English)</option>
                         </select>
                         </p>
                         <b>Step 1: Calibrate Printer</b><br />
@@ -10522,7 +10476,7 @@ Bitcoin.Util = {
                         You will put the same page back in your printer (but flipped over) to print out the back side of your wallet. This isn't just for good looks: the back side design includes additional tamper-resistant safeguards.</span>
 						<br /><br />	
 						<span id="instructions5"><b>Step 4: Cut, Fold, Seal &amp; Fund</b><br />
-                        Find your scissors! The final step is to cut out your wallet, fold it, and seal it  with tamper-evident <a href="#" onClick="window.open(window.suppliesURL, '_blank'); return false;">hologram stickers</a> or at least opaque (light-blocking) tape. Now you're ready to transfer funds from your online holdings to your new wallet.</span>
+                        Find your scissors! The final step is to cut out your wallet, fold it, and seal it  with opaque (light-blocking) tape. Now you're ready to transfer funds from your online holdings to your new wallet.</span>
                         <br /><br />
 						<span><a href="http://www.youtube.com/watch?v=a47rrYBWjWQ" target="_blank" class="nicerButton" style="width: 400px;">90 second tutorial video on YouTube &raquo;</a></span>
                                                 
@@ -10574,7 +10528,7 @@ Bitcoin.Util = {
                    <b>If you are making a paper wallet for a <a href="https://en.bitcoin.it/wiki/Vanitygen" target="_blank">vanity address</a>, or duplicating an existing paper wallet:</b>
                    <br />
                    <br />
-                   In this case, simply enter your private key in Wallet Import Format (or scan it using the "validate" feature on this web page.) WIF keys always begin with the number 5 and look something like this: '5JnwJNC7q3...' <em>The public address, e.g. '1vanityABC456...' is automatically calculated using the private key, so you only need to provide the private key.</em>
+                   In this case, simply enter your private key in Wallet Import Format (or scan it using the "validate" feature on this web page.) WIF keys always begin with the number 8 and look something like this: '8JnwJNC7q3...' <em>The public address, e.g. 'ZvanityABC456...' is automatically calculated using the private key, so you only need to provide the private key.</em>
                    <br />
                    <br />
                    
@@ -10587,14 +10541,14 @@ Bitcoin.Util = {
                    <em>No special formatting is required</em>. Just type in a great deal of (truly) random text from any source, and whatever you supply will be SHA256 hashed and converted into a private key and public address.
                 <br />
                    <br />
-                   <b>If you want to make a paper wallet which can <em>also</em> be accessed using a passphrase (AKA a "brain wallet"):</b>
+                   <!--<b>If you want to make a paper wallet which can <em>also</em> be accessed using a passphrase (AKA a "brain wallet"):</b>
                    <br />
                    <br />
                    You can make a so-called "brain wallet" by supplying a VERY secure passphrase like '1852 Adobe Cloud SMASH fuzzy steamzonk'. <em>Be extremely careful doing this because a wallet generated using an insecure passphrase is virtually guaranteed to have its balance stolen within minutes of receiving funds!</em>.
                    <br />
                    <br />The resulting paper wallet will still have an ordinary crypto-looking private key and public address, but you will <em>also</em> be able to retrieve your wallet contents by entering your passphrase into the 'verify' tab of this service or a similar service such as <a href="https://brainwallet.org" target="_blank">brainwallet.org</a>.<br /><br />
                     <strong>Note:</strong> supplying a brain wallet passphrase is different from BIP38-encrypting your wallet with a passphrase.
-				   <br />
+				   <br />-->
                    <br />
                    <a href="#" class="nicerButton" onClick="document.getElementById('selfinfo').style.display='none'; return(false);">OK</a>
                 </div>
@@ -10610,7 +10564,7 @@ Bitcoin.Util = {
                     </div>
 
 					<div id="paperadvancedcommands" class="row extra" style="float: left">
-						<span><label id="paperlabelencrypt" for="paperencrypt">BIP38 Encrypt?</label> <input type="checkbox" id="paperencrypt" onChange="ninja.wallets.paperwallet.toggleEncryptSettings(this.checked);" /></span><br />
+						<!-- --><span><label id="paperlabelencrypt" for="paperencrypt">BIP38 Encrypt?</label> <input type="checkbox" id="paperencrypt" disabled onChange="ninja.wallets.paperwallet.toggleEncryptSettings(this.checked);" /></span><br />
 						<div id="paperencryptstatus" class="hide">
 							<span><span id="paperencryptpassphrase"></span></span><br />
 							<div style="text-align: center;"><a onClick="ninja.wallets.paperwallet.toggleEncryptSettings(true);">Change passphrase</a></div>
@@ -10693,9 +10647,6 @@ Bitcoin.Util = {
                                                 
                         <br />
 						<span id="instructions13">Seal your wallet by placing two strips of sturdy <strong>light-blocking</strong> tape over the top and bottom edges of the private (folded) area. A zip-seal bag will keep it safe from moisture (especially important for inkjet prints.)</span>
-						<br /><br />	
-                        <a href="#" onClick="window.open(window.suppliesURL, '_blank'); return false;" class="nicerButton" style="width: 400px;">Purchase hologram stickers and/or zip-sealing bags &raquo;</a>	
-
 						<br /><br />	
 
 						<h1><span id="instructions16">How to add funds to your wallet:</span></h1>
@@ -10838,13 +10789,12 @@ Bitcoin.Util = {
 				<div>
 					<span class="item" id="footerlabeldonations"><b>Donations keep this service open &amp; free!</b></span>
                     <span class="item" style="font-size: 11px; font-family: 'Courier New', Courier, monospace;">
-                    <strong>Bitcoin</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1Pjg628vjMLBvADrPHsthtzKiryM2y46DG<br />
-                    <strong>Litecoin</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LYrGQmrvba7qJZUD7Jt4S1iejE5ndhw3CE<br />
-                    <strong>Dogecoin</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DSE875u8k14M3K5d93iD1fsgcHkfjjy742<br /></span>
+                    <strong>Bitcoin</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1HLaDgzd6maSFJbSCBC4hToEpGA5BNdN29<br />
+                    <strong>Zetacoin</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZZy8BUn3Wt84RvE386vhwb9Lse3ZwJ7rKN<br /></span>
                     
-                    <span class="item" style="font-size: 11px;">Contributions are shared by the <a href="https://bitcoinpaperwallet.com/#thanks" target="_blank">developers</a>, 
-                    including pointbiz of <strong>bitaddress.org</strong>.</span>
-
+                    <span>If you want donate to bitcoinpaperwallet.com <a href="https://bitcoinpaperwallet.com/#thanks" target="_blank">developers</a></span>
+                    <!--<span class="item" style="font-size: 11px;">Contributions are shared by the <a href="https://bitcoinpaperwallet.com/#thanks" target="_blank">developers</a>, 
+                    including pointbiz of <strong>bitaddress.org</strong>.</span>-->
 
 				</div>
 			</div>
@@ -10852,7 +10802,7 @@ Bitcoin.Util = {
             
                 <div id="siginfo" style="display: none; position: absolute; top: -300px;">
   
-                    After downloading and extracting the <a href="https://github.com/cantonbecker/bitcoinpaperwallet" target="_blank">ZIP package</a> for this generator, you should find a file named <b>generate-wallet.html.sig</b> 
+                    After downloading and extracting the <a href="https://github.com/zbad405/zetacoinpaperwallet" target="_blank">ZIP package</a> for this generator, you should find a file named <b>generate-wallet.html.sig</b> 
                     which you can use to:
                     <ol><li> verify that <strong>generate-wallet.html</strong> hasn't been tampered with, and</li>
                     <li>get proof that it really was authored by Canton Becker (canton@gmail.com) whose public key and fingerprint can be confirmed at <a href="http://cantonbecker.com">cantonbecker.com</a>, bitcointalk.org, etc.</li>
@@ -10869,13 +10819,11 @@ Bitcoin.Util = {
                 </div>
 
             	<span class="item"><b>Security &amp; signatures</b></span>
-                <span class="item" style="font-size: 90%;">For <a href="https://bitcoinpaperwallet.com/#security" target="_blank">secure wallet generation</a>, do not print wallets using https://bitcoinpaperwallet.com.<br />Instead, <a href="https://github.com/cantonbecker/bitcoinpaperwallet" target="_blank">download</a> the generator and run the HTML as a local file in your browser instead.</span>
-				<span class="item"><a href="https://github.com/cantonbecker/bitcoinpaperwallet" target="_blank" id="footerlabelgithub"><strong>Download</strong> (GitHub ZIP file)</a></span>
+                <span class="item" style="font-size: 90%;">For <a href="https://bitcoinpaperwallet.com/#security" target="_blank">secure wallet generation</a>, do not print wallets using https://bitcoinpaperwallet.com.<br />Instead, <a href="https://github.com/zbad405/zetacoinpaperwallet" target="_blank">download</a> the generator and run the HTML as a local file in your browser instead.</span>
+				<span class="item"><a href="https://github.com/zbad405/zetacoinpaperwallet" target="_blank" id="footerlabelgithub"><strong>Download</strong> (GitHub ZIP file)</a></span>
                 
-				<span class="item" id="footerlabelsig" style="font-size: 90%;"><a href="#" onClick="document.getElementById('siginfo').style.display='block'; return(false);">Validate PGP/GPG signature</a></span>
+				<!--<span class="item" id="footerlabelsig" style="font-size: 90%;"><a href="#" onClick="document.getElementById('siginfo').style.display='block'; return(false);">Validate PGP/GPG signature</a></span>-->
 
-                <span class="item" id="footerlabeltests" style="font-size: 90%;">Run unit tests: <a href="?unittests=1#tests">basic</a> | <a href="?asyncunittests=1#tests">async</a></span>
-                
 			</div>
 			<div class="copyright">
 				<span id="footerlabelcopyright1">&copy; The folding wallet design and tamper-evident seals are Copyright 2014 by Canton Becker.</span>
@@ -12151,604 +12099,6 @@ ninja.publicKey = {
 	};
 </script>
 
-
-<script type="text/javascript">
-(function (ninja) {
-	var ut = ninja.unitTests = {
-		runSynchronousTests: function () {
-			document.getElementById("busyblock").className = "busy";
-			var div = document.createElement("div");
-			div.setAttribute("class", "unittests");
-			div.setAttribute("id", "unittests");
-			var testResults = "";
-			var passCount = 0;
-			var testCount = 0;
-			for (var test in ut.synchronousTests) {
-				var exceptionMsg = "";
-				var resultBool = false;
-				try {
-					resultBool = ut.synchronousTests[test]();
-				} catch (ex) {
-					exceptionMsg = ex.toString();
-					resultBool = false;
-				}
-				if (resultBool == true) {
-					var passFailStr = "pass";
-					passCount++;
-				}
-				else {
-					var passFailStr = "<b>FAIL " + exceptionMsg + "</b>";
-				}
-				testCount++;
-				testResults += test + ": " + passFailStr + "<br/>";
-			}
-			testResults += passCount + " of " + testCount + " synchronous tests passed";
-			if (passCount < testCount) {
-				testResults += "<b>" + (testCount - passCount) + " unit test(s) failed</b>";
-			}
-			div.innerHTML = "<a name=\"tests\"></a><h3>Unit Tests</h3><div id=\"unittestresults\">" + testResults + "<br/><br/></div>";
-			document.body.appendChild(div);
-			document.getElementById("busyblock").className = "";
-
-	},
-
-		runAsynchronousTests: function () {
-			var div = document.createElement("div");
-			div.setAttribute("class", "unittests");
-			div.setAttribute("id", "asyncunittests");
-			div.innerHTML = "<a name=\"tests\"></a><h3>Async Unit Tests</h3><div id=\"asyncunittestresults\"></div><br/><br/><br/><br/>";
-			document.body.appendChild(div);
-
-			// run the asynchronous tests one after another so we don't crash the browser
-			ninja.foreachSerialized(ninja.unitTests.asynchronousTests, function (name, cb) {
-				document.getElementById("busyblock").className = "busy";
-				ninja.unitTests.asynchronousTests[name](cb);
-			}, function () {
-				document.getElementById("asyncunittestresults").innerHTML += "running of asynchronous unit tests complete!<br/>";
-				document.getElementById("busyblock").className = "";
-			});
-		},
-
-		synchronousTests: {
-			//ninja.publicKey tests
-			testIsPublicKeyHexFormat: function () {
-				var key = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var bool = ninja.publicKey.isPublicKeyHexFormat(key);
-				if (bool != true) {
-					return false;
-				}
-				return true;
-			},
-			testGetHexFromByteArray: function () {
-				var bytes = [4, 120, 152, 47, 64, 250, 12, 11, 122, 85, 113, 117, 131, 175, 201, 154, 78, 223, 211, 1, 162, 114, 157, 197, 155, 11, 142, 185, 225, 134, 146, 188, 181, 33, 240, 84, 250, 217, 130, 175, 76, 193, 147, 58, 253, 31, 27, 86, 62, 167, 121, 166, 170, 108, 206, 54, 163, 11, 148, 125, 214, 83, 230, 62, 68];
-				var key = ninja.publicKey.getHexFromByteArray(bytes);
-				if (key != "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44") {
-					return false;
-				}
-				return true;
-			},
-			testHexToBytes: function () {
-				var key = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var bytes = Crypto.util.hexToBytes(key);
-				if (bytes.toString() != "4,120,152,47,64,250,12,11,122,85,113,117,131,175,201,154,78,223,211,1,162,114,157,197,155,11,142,185,225,134,146,188,181,33,240,84,250,217,130,175,76,193,147,58,253,31,27,86,62,167,121,166,170,108,206,54,163,11,148,125,214,83,230,62,68") {
-					return false;
-				}
-				return true;
-			},
-			testGetBitcoinAddressFromByteArray: function () {
-				var bytes = [4, 120, 152, 47, 64, 250, 12, 11, 122, 85, 113, 117, 131, 175, 201, 154, 78, 223, 211, 1, 162, 114, 157, 197, 155, 11, 142, 185, 225, 134, 146, 188, 181, 33, 240, 84, 250, 217, 130, 175, 76, 193, 147, 58, 253, 31, 27, 86, 62, 167, 121, 166, 170, 108, 206, 54, 163, 11, 148, 125, 214, 83, 230, 62, 68];
-				var address = ninja.publicKey.getBitcoinAddressFromByteArray(bytes);
-				if (address != "1Cnz9ULjzBPYhDw1J8bpczDWCEXnC9HuU1") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromAdding: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "0419153E53FECAD7FF07FEC26F7DDEB1EDD66957711AA4554B8475F10AFBBCD81C0159DC0099AD54F733812892EB9A11A8C816A201B3BAF0D97117EBA2033C9AB2";
-				var bytes = ninja.publicKey.getByteArrayFromAdding(key1, key2);
-				if (bytes.toString() != "4,151,19,227,152,54,37,184,255,4,83,115,216,102,189,76,82,170,57,4,196,253,2,41,74,6,226,33,167,199,250,74,235,223,128,233,99,150,147,92,57,39,208,84,196,71,68,248,166,106,138,95,172,253,224,70,187,65,62,92,81,38,253,79,0") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromAddingCompressed: function () {
-				var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
-				var key2 = "0219153E53FECAD7FF07FEC26F7DDEB1EDD66957711AA4554B8475F10AFBBCD81C";
-				var bytes = ninja.publicKey.getByteArrayFromAdding(key1, key2);
-				var hex = ninja.publicKey.getHexFromByteArray(bytes);
-				if (hex != "029713E3983625B8FF045373D866BD4C52AA3904C4FD02294A06E221A7C7FA4AEB") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromAddingUncompressedAndCompressed: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "0219153E53FECAD7FF07FEC26F7DDEB1EDD66957711AA4554B8475F10AFBBCD81C";
-				var bytes = ninja.publicKey.getByteArrayFromAdding(key1, key2);
-				if (bytes.toString() != "4,151,19,227,152,54,37,184,255,4,83,115,216,102,189,76,82,170,57,4,196,253,2,41,74,6,226,33,167,199,250,74,235,223,128,233,99,150,147,92,57,39,208,84,196,71,68,248,166,106,138,95,172,253,224,70,187,65,62,92,81,38,253,79,0") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromAddingShouldReturnNullWhenSameKey1: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var bytes = ninja.publicKey.getByteArrayFromAdding(key1, key2);
-				if (bytes != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromAddingShouldReturnNullWhenSameKey2: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
-				var bytes = ninja.publicKey.getByteArrayFromAdding(key1, key2);
-				if (bytes != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromMultiplying: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
-				if (bytes.toString() != "4,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57,115,35,54,105,7,180,5,106,217,57,229,127,174,145,215,79,121,163,191,211,143,215,50,48,156,211,178,72,226,68,150,52") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromMultiplyingCompressedOutputsUncompressed: function () {
-				var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
-				var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
-				if (bytes.toString() != "4,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57,115,35,54,105,7,180,5,106,217,57,229,127,174,145,215,79,121,163,191,211,143,215,50,48,156,211,178,72,226,68,150,52") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromMultiplyingCompressedOutputsCompressed: function () {
-				var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
-				var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-				var ecKey = new Bitcoin.ECKey(key2);
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, ecKey);
-				if (bytes.toString() != "2,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57") {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromMultiplyingShouldReturnNullWhenSameKey1: function () {
-				var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
-				var key2 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
-				if (bytes != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetByteArrayFromMultiplyingShouldReturnNullWhenSameKey2: function () {
-				var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
-				var key2 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
-				if (bytes != null) {
-					return false;
-				}
-				return true;
-			},
-			// confirms multiplication is working and BigInteger was created correctly (Pub Key B vs Priv Key A)
-			testGetPubHexFromMultiplyingPrivAPubB: function () {
-				var keyPub = "04F04BF260DCCC46061B5868F60FE962C77B5379698658C98A93C3129F5F98938020F36EBBDE6F1BEAF98E5BD0E425747E68B0F2FB7A2A59EDE93F43C0D78156FF";
-				var keyPriv = "B1202A137E917536B3B4C5010C3FF5DDD4784917B3EEF21D3A3BF21B2E03310C";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new Bitcoin.ECKey(keyPriv));
-				var pubHex = ninja.publicKey.getHexFromByteArray(bytes);
-				if (pubHex != "04C6732006AF4AE571C7758DF7A7FB9E3689DFCF8B53D8724D3A15517D8AB1B4DBBE0CB8BB1C4525F8A3001771FC7E801D3C5986A555E2E9441F1AD6D181356076") {
-					return false;
-				}
-				return true;
-			},
-			// confirms multiplication is working and BigInteger was created correctly (Pub Key A vs Priv Key B)
-			testGetPubHexFromMultiplyingPrivBPubA: function () {
-				var keyPub = "0429BF26C0AF7D31D608474CEBD49DA6E7C541B8FAD95404B897643476CE621CFD05E24F7AE8DE8033AADE5857DB837E0B704A31FDDFE574F6ECA879643A0D3709";
-				var keyPriv = "7DE52819F1553C2BFEDE6A2628B6FDDF03C2A07EB21CF77ACA6C2C3D252E1FD9";
-				var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new Bitcoin.ECKey(keyPriv));
-				var pubHex = ninja.publicKey.getHexFromByteArray(bytes);
-				if (pubHex != "04C6732006AF4AE571C7758DF7A7FB9E3689DFCF8B53D8724D3A15517D8AB1B4DBBE0CB8BB1C4525F8A3001771FC7E801D3C5986A555E2E9441F1AD6D181356076") {
-					return false;
-				}
-				return true;
-			},
-
-			// Private Key tests
-			testBadKeyIsNotWif: function () {
-				return !(Bitcoin.ECKey.isWalletImportFormat("bad key"));
-			},
-			testBadKeyIsNotWifCompressed: function () {
-				return !(Bitcoin.ECKey.isCompressedWalletImportFormat("bad key"));
-			},
-			testBadKeyIsNotHex: function () {
-				return !(Bitcoin.ECKey.isHexFormat("bad key"));
-			},
-			testBadKeyIsNotBase64: function () {
-				return !(Bitcoin.ECKey.isBase64Format("bad key"));
-			},
-			testBadKeyIsNotMini: function () {
-				return !(Bitcoin.ECKey.isMiniFormat("bad key"));
-			},
-			testBadKeyReturnsNullPrivFromECKey: function () {
-				var key = "bad key";
-				var ecKey = new Bitcoin.ECKey(key);
-				if (ecKey.priv != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetBitcoinPrivateKeyByteArray: function () {
-				var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var bytes = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getBitcoinPrivateKeyByteArray().toString() != bytes.toString()) {
-					return false;
-				}
-				return true;
-			},
-			testECKeyDecodeWalletImportFormat: function () {
-				var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var bytes1 = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-				var bytes2 = Bitcoin.ECKey.decodeWalletImportFormat(key);
-				if (bytes1.toString() != bytes2.toString()) {
-					return false;
-				}
-				return true;
-			},
-			testECKeyDecodeCompressedWalletImportFormat: function () {
-				var key = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var bytes1 = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-				var bytes2 = Bitcoin.ECKey.decodeCompressedWalletImportFormat(key);
-				if (bytes1.toString() != bytes2.toString()) {
-					return false;
-				}
-				return true;
-			},
-			testWifToPubKeyHex: function () {
-				var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getPubKeyHex() != "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44"
-					|| btcKey.getPubPoint().compressed != false) {
-				return false;
-			}
-			return true;
-		},
-		testWifToPubKeyHexCompressed: function () {
-			var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-			var btcKey = new Bitcoin.ECKey(key);
-			btcKey.setCompressed(true);
-			if (btcKey.getPubKeyHex() != "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5"
-					|| btcKey.getPubPoint().compressed != true) {
-				return false;
-			}
-			return true;
-		},
-		testBase64ToECKey: function () {
-			var key = "KSZlw4ckGK3x2n/6OmRvLwYCJG2mCYqR0inDIVDycYs=";
-			var btcKey = new Bitcoin.ECKey(key);
-			if (btcKey.getBitcoinBase64Format() != "KSZlw4ckGK3x2n/6OmRvLwYCJG2mCYqR0inDIVDycYs=") {
-				return false;
-			}
-			return true;
-		},
-		testHexToECKey: function () {
-			var key = "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B";
-			var btcKey = new Bitcoin.ECKey(key);
-			if (btcKey.getBitcoinHexFormat() != "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B") {
-				return false;
-			}
-			return true;
-		},
-		testCompressedWifToECKey: function () {
-			var key = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-			var btcKey = new Bitcoin.ECKey(key);
-			if (btcKey.getBitcoinWalletImportFormat() != "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S"
-					|| btcKey.getPubPoint().compressed != true) {
-					return false;
-				}
-				return true;
-			},
-			testWifToECKey: function () {
-				var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getBitcoinWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
-					return false;
-				}
-				return true;
-			},
-			testBrainToECKey: function () {
-				var key = "bitaddress.org unit test";
-				var bytes = Crypto.SHA256(key, { asBytes: true });
-				var btcKey = new Bitcoin.ECKey(bytes);
-				if (btcKey.getBitcoinWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
-					return false;
-				}
-				return true;
-			},
-			testMini30CharsToECKey: function () {
-				var key = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getBitcoinWalletImportFormat() != "5JrBLQseeZdYw4jWEAHmNxGMr5fxh9NJU3fUwnv4khfKcg2rJVh") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromAdding: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-				var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromAddingCompressed: function () {
-				var key1 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-				var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "L3A43j2pc2J8F2SjBNbYprPrcDpDCh8Aju8dUH65BEM2r7RFSLv4") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromAddingUncompressedAndCompressed: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-				var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromAddingShouldReturnNullWhenSameKey1: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-				if (ecKey != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromAddingShouldReturnNullWhenSameKey2: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-				if (ecKey != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromMultiplying: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-				var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromMultiplyingCompressed: function () {
-				var key1 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-				var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "L5LFitc24jme2PfVChJS3bKuQAPBp54euuqLWciQdF2CxnaU3M8t") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromMultiplyingUncompressedAndCompressed: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-				var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-				if (ecKey.getBitcoinWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromMultiplyingShouldReturnNullWhenSameKey1: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-				if (ecKey != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromMultiplyingShouldReturnNullWhenSameKey2: function () {
-				var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-				var key2 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-				var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-				if (ecKey != null) {
-					return false;
-				}
-				return true;
-			},
-			testGetECKeyFromBase6Key: function () {
-				var baseKey = "100531114202410255230521444145414341221420541210522412225005202300434134213212540304311321323051431";
-				var hexKey = "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B";
-				var ecKey = new Bitcoin.ECKey(baseKey);
-				if (ecKey.getBitcoinHexFormat() != hexKey) {
-					return false;
-				}
-				return true;
-			},
-
-			// EllipticCurve tests
-			testDecodePointEqualsDecodeFrom: function () {
-				var key = "04F04BF260DCCC46061B5868F60FE962C77B5379698658C98A93C3129F5F98938020F36EBBDE6F1BEAF98E5BD0E425747E68B0F2FB7A2A59EDE93F43C0D78156FF";
-				var ecparams = EllipticCurve.getSECCurveByName("secp256k1");
-				var ecPoint1 = EllipticCurve.PointFp.decodeFrom(ecparams.getCurve(), Crypto.util.hexToBytes(key));
-				var ecPoint2 = ecparams.getCurve().decodePointHex(key);
-				if (!ecPoint1.equals(ecPoint2)) {
-					return false;
-				}
-				return true;
-			},
-			testDecodePointHexForCompressedPublicKey: function () {
-				var key = "03F04BF260DCCC46061B5868F60FE962C77B5379698658C98A93C3129F5F989380";
-				var pubHexUncompressed = ninja.publicKey.getDecompressedPubKeyHex(key);
-				if (pubHexUncompressed != "04F04BF260DCCC46061B5868F60FE962C77B5379698658C98A93C3129F5F98938020F36EBBDE6F1BEAF98E5BD0E425747E68B0F2FB7A2A59EDE93F43C0D78156FF") {
-					return false;
-				}
-				return true;
-			},
-			// old bugs
-			testBugWithLeadingZeroBytePublicKey: function () {
-				var key = "5Je7CkWTzgdo1RpwjYhwnVKxQXt8EPRq17WZFtWcq5umQdsDtTP";
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getBitcoinAddress() != "1M6dsMZUjFxjdwsyVk8nJytWcfr9tfUa9E") {
-					return false;
-				}
-				return true;
-			},
-			testBugWithLeadingZeroBytePrivateKey: function () {
-				var key = "0004d30da67214fa65a41a6493576944c7ea86713b14db437446c7a8df8e13da";
-				var btcKey = new Bitcoin.ECKey(key);
-				if (btcKey.getBitcoinAddress() != "1NAjZjF81YGfiJ3rTKc7jf1nmZ26KN7Gkn") {
-					return false;
-				}
-				return true;
-			}
-		},
-
-		asynchronousTests: {
-			//https://en.bitcoin.it/wiki/BIP_0038
-			testBip38: function (done) {
-				var tests = [
-				//No compression, no EC multiply
-					["6PRVWUbkzzsbcVac2qwfssoUJAN1Xhrg6bNk8J7Nzm5H7kxEbn2Nh2ZoGg", "TestingOneTwoThree", "5KN7MzqK5wt2TP1fQCYyHBtDrXdJuXbUzm4A9rKAteGu3Qi5CVR"],
-					["6PRNFFkZc2NZ6dJqFfhRoFNMR9Lnyj7dYGrzdgXXVMXcxoKTePPX1dWByq", "Satoshi", "5HtasZ6ofTHP6HCwTqTkLDuLQisYPah7aUnSKfC7h4hMUVw2gi5"],
-				//Compression, no EC multiply
-					["6PYNKZ1EAgYgmQfmNVamxyXVWHzK5s6DGhwP4J5o44cvXdoY7sRzhtpUeo", "TestingOneTwoThree", "L44B5gGEpqEDRS9vVPz7QT35jcBG2r3CZwSwQ4fCewXAhAhqGVpP"],
-					["6PYLtMnXvfG3oJde97zRyLYFZCYizPU5T3LwgdYJz1fRhh16bU7u6PPmY7", "Satoshi", "KwYgW8gcxj1JWJXhPSu4Fqwzfhp5Yfi42mdYmMa4XqK7NJxXUSK7"],
-				//EC multiply, no compression, no lot/sequence numbers
-					["6PfQu77ygVyJLZjfvMLyhLMQbYnu5uguoJJ4kMCLqWwPEdfpwANVS76gTX", "TestingOneTwoThree", "5K4caxezwjGCGfnoPTZ8tMcJBLB7Jvyjv4xxeacadhq8nLisLR2"],
-					["6PfLGnQs6VZnrNpmVKfjotbnQuaJK4KZoPFrAjx1JMJUa1Ft8gnf5WxfKd", "Satoshi", "5KJ51SgxWaAYR13zd9ReMhJpwrcX47xTJh2D3fGPG9CM8vkv5sH"],
-				//EC multiply, no compression, lot/sequence numbers
-					["6PgNBNNzDkKdhkT6uJntUXwwzQV8Rr2tZcbkDcuC9DZRsS6AtHts4Ypo1j", "MOLON LABE", "5JLdxTtcTHcfYcmJsNVy1v2PMDx432JPoYcBTVVRHpPaxUrdtf8"],
-					["6PgGWtx25kUg8QWvwuJAgorN6k9FbE25rv5dMRwu5SKMnfpfVe5mar2ngH", Crypto.charenc.UTF8.bytesToString([206, 156, 206, 159, 206, 155, 206, 169, 206, 157, 32, 206, 155, 206, 145, 206, 146, 206, 149])/*UTF-8 characters, encoded in source so they don't get corrupted*/, "5KMKKuUmAkiNbA3DazMQiLfDq47qs8MAEThm4yL8R2PhV1ov33D"]];
-
-				// running each test uses a lot of memory, which isn't freed
-				// immediately, so give the VM a little time to reclaim memory
-				function waitThenCall(callback) {
-					return function () { setTimeout(callback, 10000); }
-				}
-
-				var decryptTest = function (test, i, onComplete) {
-					ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(test[0], test[1], function (privBytes) {
-						if (privBytes.constructor == Error) {
-							document.getElementById("asyncunittestresults").innerHTML += "fail testDecryptBip38 #" + i + ", error: " + privBytes.message + "<br/>";
-						} else {
-							var btcKey = new Bitcoin.ECKey(privBytes);
-							var wif = !test[2].substr(0, 1).match(/[LK]/) ? btcKey.setCompressed(false).getBitcoinWalletImportFormat() : btcKey.setCompressed(true).getBitcoinWalletImportFormat();
-							if (wif != test[2]) {
-								document.getElementById("asyncunittestresults").innerHTML += "fail testDecryptBip38 #" + i + "<br/>";
-							} else {
-								document.getElementById("asyncunittestresults").innerHTML += "pass testDecryptBip38 #" + i + "<br/>";
-							}
-						}
-						onComplete();
-					});
-				};
-
-				var encryptTest = function (test, compressed, i, onComplete) {
-					ninja.privateKey.BIP38PrivateKeyToEncryptedKeyAsync(test[2], test[1], compressed, function (encryptedKey) {
-						if (encryptedKey === test[0]) {
-							document.getElementById("asyncunittestresults").innerHTML += "pass testBip38Encrypt #" + i + "<br/>";
-						} else {
-							document.getElementById("asyncunittestresults").innerHTML += "fail testBip38Encrypt #" + i + "<br/>";
-							document.getElementById("asyncunittestresults").innerHTML += "expected " + test[0] + "<br/>received " + encryptedKey + "<br/>";
-						}
-						onComplete();
-					});
-				};
-
-				// test randomly generated encryption-decryption cycle
-				var cycleTest = function (i, compress, onComplete) {
-					// create new private key
-					var privKey = (new Bitcoin.ECKey(false)).getBitcoinWalletImportFormat();
-
-					// encrypt private key
-					ninja.privateKey.BIP38PrivateKeyToEncryptedKeyAsync(privKey, 'testing', compress, function (encryptedKey) {
-						// decrypt encryptedKey
-						ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(encryptedKey, 'testing', function (decryptedBytes) {
-							var decryptedKey = (new Bitcoin.ECKey(decryptedBytes)).getBitcoinWalletImportFormat();
-
-							if (decryptedKey === privKey) {
-								document.getElementById("asyncunittestresults").innerHTML += "pass cycleBip38 test #" + i + "<br/>";
-							}
-							else {
-								document.getElementById("asyncunittestresults").innerHTML += "fail cycleBip38 test #" + i + " " + privKey + "<br/>";
-								document.getElementById("asyncunittestresults").innerHTML += "encrypted key: " + encryptedKey + "<br/>decrypted key: " + decryptedKey;
-							}
-							onComplete();
-						});
-					});
-				};
-
-				// intermediate test - create some encrypted keys from an intermediate
-				// then decrypt them to check that the private keys are recoverable
-				var intermediateTest = function (i, onComplete) {
-					var pass = Math.random().toString(36).substr(2);
-					ninja.privateKey.BIP38GenerateIntermediatePointAsync(pass, null, null, function (intermediatePoint) {
-						ninja.privateKey.BIP38GenerateECAddressAsync(intermediatePoint, false, function (address, encryptedKey) {
-							ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(encryptedKey, pass, function (privBytes) {
-								if (privBytes.constructor == Error) {
-									document.getElementById("asyncunittestresults").innerHTML += "fail testBip38Intermediate #" + i + ", error: " + privBytes.message + "<br/>";
-								} else {
-									var btcKey = new Bitcoin.ECKey(privBytes);
-									var btcAddress = btcKey.getBitcoinAddress();
-									if (address !== btcKey.getBitcoinAddress()) {
-										document.getElementById("asyncunittestresults").innerHTML += "fail testBip38Intermediate #" + i + "<br/>";
-									} else {
-										document.getElementById("asyncunittestresults").innerHTML += "pass testBip38Intermediate #" + i + "<br/>";
-									}
-								}
-								onComplete();
-							});
-						});
-					});
-				}
-
-				document.getElementById("asyncunittestresults").innerHTML += "running " + tests.length + " tests named testDecryptBip38<br/>";
-				document.getElementById("asyncunittestresults").innerHTML += "running 4 tests named testBip38Encrypt<br/>";
-				document.getElementById("asyncunittestresults").innerHTML += "running 2 tests named cycleBip38<br/>";
-				document.getElementById("asyncunittestresults").innerHTML += "running 5 tests named testBip38Intermediate<br/>";
-				ninja.runSerialized([
-					function (cb) {
-						ninja.forSerialized(0, tests.length, function (i, callback) {
-							decryptTest(tests[i], i, waitThenCall(callback));
-						}, waitThenCall(cb));
-					},
-					function (cb) {
-						ninja.forSerialized(0, 4, function (i, callback) {
-							// only first 4 test vectors are not EC-multiply,
-							// compression param false for i = 1,2 and true for i = 3,4
-							encryptTest(tests[i], i >= 2, i, waitThenCall(callback));
-						}, waitThenCall(cb));
-					},
-					function (cb) {
-						ninja.forSerialized(0, 2, function (i, callback) {
-							cycleTest(i, i % 2 ? true : false, waitThenCall(callback));
-						}, waitThenCall(cb));
-					},
-					function (cb) {
-						ninja.forSerialized(0, 5, function (i, callback) {
-							intermediateTest(i, waitThenCall(callback));
-						}, cb);
-					}
-				], done);
-			}
-		}
-	};
-})(ninja);
-</script>
-
 <script type="text/javascript">
 	// run unit tests
 	if (ninja.getQueryString()["unittests"] == "true" || ninja.getQueryString()["unittests"] == "1") {
@@ -12893,7 +12243,7 @@ ninja.publicKey = {
 	}
 
 function setDesign (whichDesign, isOnLoad) {
-	if (!whichDesign) whichDesign = 'default';	
+	if (!whichDesign) whichDesign = 'alt-zetacoin';	
 	// if we used the dropdown menu to select an alt-coin, we need to reload the page altogether.
 	if (!isOnLoad && whichDesign.substring(0,4) == 'alt-') window.location='?design=' + whichDesign;
 	// if we're already using an altcoin, reload the page no matter which design we choose.
