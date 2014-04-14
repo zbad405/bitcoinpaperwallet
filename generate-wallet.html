@@ -87,6 +87,8 @@
 
 <script type="text/javascript">
 
+window.currencyName= 'Zetacoin';
+
 function setCryptoCurrency(toThis) {
 	window.currencyName = toThis;
 	switch (toThis)
@@ -9979,7 +9981,7 @@ Bitcoin.Util = {
 		#progress-bar-percentage span { display: inline-block; position: absolute; width: 100%; left: 0; }
 				
 		#main { position: relative; margin: 0px auto; width: 1010px; color: #444; } /* removed text-align: center; */
-		#logoback {  background-image:url(images/logo.png); background-position: top left; background-repeat: no-repeat; }
+		#logoback {  background-image:url(images/logo-alt-zetacoin.png); background-position: top left; background-repeat: no-repeat; }
 		#menu { visibility: hidden; font-size: 90%; padding: 0 12px;}
 		
 		#culturemenu { text-align: right; padding: 10px 20px; font-size: 12px; }
@@ -10632,7 +10634,7 @@ Bitcoin.Util = {
                         <div style="float: right; margin: 0 0 20px 30px; padding-left: 30px; border-left: 4px solid #eee;">
                          <img src="images/finished-folds.png" width="355" height="144" alt="Folding Diagram"><br /><br />
                          <img src="images/finished-sample.jpg" width="400" height="203" alt="Sample Wallet"><br /><br />
-                         <img src="images/finished-sample-sealed.jpg" width="400" height="203" alt="Sealed Wallet">
+                         <img src="images/finished-sample-alt-zetacoin.jpg" width="400" height="203" alt="Sealed Wallet">
 						</div>
 
 						<span id="instructions22">Cut out your wallet <em>using the dotted lines on the front as a guide, not the back!</em>
@@ -12097,27 +12099,6 @@ ninja.publicKey = {
 			ninja.wallets.paperwallet.buildManual(ninja.wallets.detailwallet.lastwallet, ninja.wallets.paperwallet.passphrase);
 		}
 	};
-</script>
-
-<script type="text/javascript">
-	// run unit tests
-	if (ninja.getQueryString()["unittests"] == "true" || ninja.getQueryString()["unittests"] == "1") {
-		ninja.unitTests.runSynchronousTests();
-		// ninja.translator.showEnglishJson();
-		// no need to show translations until we actually have some. 9/5/2013 - Canton
-	}
-	// run async unit tests
-	if (ninja.getQueryString()["asyncunittests"] == "true" || ninja.getQueryString()["asyncunittests"] == "1") {
-		ninja.unitTests.runAsynchronousTests();
-	}
-	// change language
-	if (ninja.getQueryString()["culture"] != undefined) {
-		ninja.translator.translate(ninja.getQueryString()["culture"]);
-	}
-
-	if (ninja.getQueryString()["showseedpool"] == "true" || ninja.getQueryString()["showseedpool"] == "1") {
-		document.getElementById("seedpoolarea").style.display = "block";
-	}
 </script>
 
 <script type="text/javascript">
